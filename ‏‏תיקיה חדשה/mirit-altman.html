@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מירית אלטמן - קוסמטיקה מקצועית</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe1e8 50%, #ffc2d1 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,182,193,0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,240,245,0.95) 100%);
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(255,105,135,0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,182,193,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,182,193,0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .logo {
+            width: 220px;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 8px 20px rgba(255,105,135,0.2));
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #ff6987;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p:last-of-type {
+            font-size: 1.1rem;
+            color: #ff6987;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button.phone {
+            background: linear-gradient(135deg, #ff6987, #ff8fa3);
+            color: white;
+        }
+
+        .cta-button.whatsapp {
+            background: linear-gradient(135deg, #25D366, #20c997);
+            color: white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Services Grid */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,248,250,0.95) 100%);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(255,105,135,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,182,193,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6987, #ffb3c6);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(255,105,135,0.2);
+        }
+
+        .service-card h3 {
+            color: #ff6987;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,182,193,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: rgba(255,182,193,0.05);
+            padding: 15px 10px;
+            border-radius: 10px;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            font-weight: 500;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: #ff6987;
+            font-size: 1.2rem;
+            padding: 5px 15px;
+            background: rgba(255,182,193,0.1);
+            border-radius: 20px;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,248,250,0.95) 100%);
+            border-radius: 25px;
+            padding: 45px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 40px rgba(255,105,135,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,182,193,0.2);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card h3 {
+            color: #ff6987;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,182,193,0.2);
+            font-size: 1rem;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .hours-table td:last-child {
+            color: #ff6987;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .policy-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255,182,193,0.05) 0%, rgba(255,218,225,0.05) 100%);
+            border-radius: 15px;
+            border-right: 4px solid #ff6987;
+            transition: all 0.3s ease;
+        }
+
+        .policy-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255,105,135,0.1);
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,248,250,0.95) 100%);
+            border-radius: 25px;
+            padding: 45px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(255,105,135,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,182,193,0.2);
+        }
+
+        .about-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #ff6987;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6987, #ffb3c6);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #666;
+        }
+
+        .about-features {
+            display: grid;
+            gap: 20px;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, rgba(255,240,245,0.8) 0%, rgba(255,228,235,0.8) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            border-right: 4px solid #ff6987;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,182,193,0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature:hover::before {
+            left: 100%;
+        }
+
+        .feature:hover {
+            transform: translateX(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255,105,135,0.15);
+        }
+
+        .feature h3 {
+            color: #ff6987;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .address {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .location-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(66,133,244,0.3);
+            margin: 15px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .location-button:hover::before {
+            left: 100%;
+        }
+
+        .location-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(66,133,244,0.4);
+        }
+
+        .instagram-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(228,64,95,0.3);
+            margin: 15px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instagram-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .instagram-button:hover::before {
+            left: 100%;
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(228,64,95,0.4);
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 8px 25px rgba(37,211,102,0.6), 0 0 0 10px rgba(37,211,102,0.1); }
+            100% { box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(37,211,102,0.6);
+            animation: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .floating-whatsapp {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <svg class="logo" viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff6987;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ffb3c6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <rect width="220" height="90" rx="20" fill="url(#logoGrad)" opacity="0.1"/>
+                <text x="110" y="40" font-family="Heebo, serif" font-size="26" font-weight="300" text-anchor="middle" fill="#ff6987">Mirit Altman</text>
+                <text x="110" y="65" font-family="Heebo" font-size="14" text-anchor="middle" fill="#ff6987">קוסמטיקה מקצועית</text>
+            </svg>
+            
+            <h1>מירית אלטמן</h1>
+            <p>קוסמטיקה מקצועית • לק ג'ל • עיצוב גבות</p>
+            <p>משתמשת במוצרים הכי איכותיים • עבודה היגיינית ביותר</p>
+            
+            <div class="cta-buttons">
+                <a href="tel:0525669020" class="cta-button phone">
+                    📞 התקשרי עכשיו
+                </a>
+                <a href="https://wa.me/972525669020?text=שלום, אני מעוניינת לקבוע תור" class="cta-button whatsapp">
+                    💬 שלחי הודעה בוואטסאפ
+                </a>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section">
+            <h2 class="about-title">הכירו את העסק</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        ברוכות הבאות לסטודיו הפרטי שלי! אני מירית אלטמן, עצמאית בעלת עסק קוסמטיקה מקצועי 
+                        המתמחה בלק ג'ל ועיצוב גבות. אני עובדת עם תשומת לב אישית לכל לקוחה ומקפידה על 
+                        איכות ומקצועיות ברמה הגבוהה ביותר.
+                    </p>
+                    <br>
+                    <p>
+                        הסטודיו שלי ממוקם בהוד השרון, במקום נעים ומקצועי. אני משתמשת אך ורק במוצרים 
+                        הכי איכותיים שיש במשק ומקפידה על תנאי היגיינה הגבוהים ביותר. העבודה שלי היא 
+                        היגיינית ביותר והתוצאות מדברות בעד עצמן.
+                    </p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <h3>💎 מוצרים איכותיים</h3>
+                        <p>שימוש במוצרים הכי איכותיים שיש במשק</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🧼 היגיינה מושלמת</h3>
+                        <p>עבודה בתנאי היגיינה מקצועיים ברמה הגבוהה ביותר</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🎯 טיפול אישי</h3>
+                        <p>התמחות בלק ג'ל ועיצוב גבות עם תשומת לב אישית</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🏢 סטודיו פרטי</h3>
+                        <p>אווירה נעימה ומקצועית בהוד השרון</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services">
+            <div class="service-card">
+                <h3>🤝 טיפולי ידיים</h3>
+                <div class="service-item">
+                    <span class="service-name">מניקור + לק</span>
+                    <span class="service-price">100₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">מניקור + לק ג'ל</span>
+                    <span class="service-price">120₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">מניקור + מבנה אנטומי</span>
+                    <span class="service-price">140₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">השלמת ציפורניים</span>
+                    <span class="service-price">10₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">תיקון שבר/סדק (2 ציפורניים ומעלה)</span>
+                    <span class="service-price">10₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">הסרת לק ג'ל + מניקור</span>
+                    <span class="service-price">80₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">פרנץ / אומברה</span>
+                    <span class="service-price">+10₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">קישוטים</span>
+                    <span class="service-price">5-20₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">סידור ציפורניים + לק רגיל</span>
+                    <span class="service-price">70₪</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>🦶 טיפולי רגליים</h3>
+                <div class="service-item">
+                    <span class="service-name">פדיקור + לק רגיל</span>
+                    <span class="service-price">130₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">פדיקור + לק ג'ל</span>
+                    <span class="service-price">220₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">לק ג'ל רגליים</span>
+                    <span class="service-price">110₪</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>👁️ עיצוב גבות</h3>
+                <div class="service-item">
+                    <span class="service-name">עיצוב + שיקום גבות טבעיות (כולל שפם)</span>
+                    <span class="service-price">70₪</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-name">צבע לגבות</span>
+                    <span class="service-price">+10₪</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🕒 שעות עבודה</h3>
+                    <table class="hours-table">
+                        <tr>
+                            <td>יום ראשון</td>
+                            <td>10:00-20:00</td>
+                        </tr>
+                        <tr>
+                            <td>יום שני</td>
+                            <td>8:30-16:30</td>
+                        </tr>
+                        <tr>
+                            <td>יום שלישי</td>
+                            <td>10:00-20:00</td>
+                        </tr>
+                        <tr>
+                            <td>יום רביעי</td>
+                            <td style="color: #999;">סגור</td>
+                        </tr>
+                        <tr>
+                            <td>יום חמישי</td>
+                            <td>8:30-16:30</td>
+                        </tr>
+                        <tr>
+                            <td>יום שישי</td>
+                            <td>8:30-16:00</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="info-card">
+                    <h3>📋 מדיניות התורים</h3>
+                    <div class="policy-item">
+                        <strong>הזמן חשוב לשתינו:</strong> ביטול/שינוי מועד התור ניתן עד 24 שעות ממועד התור
+                    </div>
+                    <div class="policy-item">
+                        <strong>איחור:</strong> איחור מעל 10 דקות עלול לגרום לביטול התור
+                    </div>
+                    <div class="policy-item">
+                        <strong>קישוטים מיוחדים:</strong> עדכני אותי מראש על קישוטים/פרנץ/השלמות כדי שאוכל לשריין תור ממושך
+                    </div>
+                    <div class="policy-item">
+                        <strong>לאחר הטיפול:</strong> תיקון ציפורן בשבוע הראשון ללא עלות, לאחר מכן בתשלום
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>💳 אמצעי תשלום</h3>
+                    <p style="font-size: 1.1rem; color: #666; padding: 15px; background: rgba(255,182,193,0.05); border-radius: 15px;">
+                        ניתן לשלם במזומן, ביט או פייבוקס
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <div class="address">
+                📍 ששת הימים 2ג', הוד השרון
+            </div>
+            <a href="https://waze.com/ul?q=ששת%20הימים%202ג%20הוד%20השרון&navigate=yes" class="location-button" target="_blank">
+                🗺️ נווט בווייז
+            </a>
+            <br>
+            <a href="https://www.instagram.com/mirit_altman_86?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-button" target="_blank">
+                📸 עקבי באינסטגרם
+            </a>
+            <div class="cta-buttons">
+                <a href="tel:0525669020" class="cta-button phone">
+                    📞 0525669020
